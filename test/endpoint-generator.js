@@ -18,7 +18,7 @@ function randInt(lower, higher) {
 
 describe('endpointGenerator', () => {
 
-  describe('generate', () => {
+  describe('chain', () => {
 
     it('should allow chaining single child', (done) => {
       const baseIn = rand();
