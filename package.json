@@ -1,11 +1,11 @@
 {
-  "name": "wrapper-generator",
-  "version": "0.0.2",
-  "description": "Wrapper Chainer Generator to simplify wrapper modules",
+  "name": "function-chainer",
+  "version": "0.1.0",
+  "description": "Module to simplify handling child response functions",
   "main": "dist/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/calebmorris/wrapper-generator"
+    "url": "https://github.com/calebmorris/function-chainer"
   },
   "scripts": {
     "postinstall": "npm run dist",
@@ -24,7 +24,6 @@
   "dependencies": {
     "babel": "^4.7.16",
     "bluebird": "^2.9.21",
-    "joi": "^6.0.8",
     "lodash": "^3.6.0"
   },
   "devDependencies": {
@@ -32,7 +31,6 @@
     "eslint": "^0.18.0",
     "istanbul": "^0.3.13",
     "mocha": "^2.2.1",
-    "sinon": "^1.14.1",
-    "proxyquire": "^1.4.0"
+    "sinon": "^1.14.1"
   }
 }
