@@ -21,7 +21,7 @@ InvalidChildNameError.prototype = Error.prototype;
  * @throws InvalidChildNameError
  * @returns {Func} - Chained function
  */
-function generate(base, children) {
+function chain(base, children) {
 
   children = children || [];
 
@@ -76,4 +76,4 @@ function generate(base, children) {
 
 }
 
-export default { generate, InvalidChildNameError };
+export default { chain, InvalidChildNameError };

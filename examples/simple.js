@@ -1,4 +1,4 @@
-var generate = require('../dist/endpointGenerator').generate;
+var chain = require('../dist').chain;
 
 function base() {
   console.log('BASE');
@@ -8,7 +8,7 @@ function child() {
   console.log('CHILD');
 }
 
-var base = generate(base, [child]);
+var base = chain(base, { child : child } );
 
 base(); // Prints BASE
 base().child(); // Prints CHILD

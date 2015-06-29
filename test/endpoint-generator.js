@@ -3,7 +3,7 @@ import Promise from 'bluebird';
 import sinon from 'sinon';
 import { expect } from 'chai';
 
-import endpointGenerator from '../src/endpoint-generator';
+import { chain } from '../src/endpoint-generator';
 
 function rand() {
   return Math.random().toString(36).substring(7);
@@ -34,7 +34,7 @@ describe('endpointGenerator', () => {
       childStub.withArgs(childIn).onCall(0).returns(childReturn);
       childStub.returns(null);
 
-      const base = endpointGenerator.generate(baseStub, { child : childStub });
+      const base = chain(baseStub, { child : childStub });
 
       return Promise
         .try(base, [baseIn])
@@ -79,8 +79,8 @@ describe('endpointGenerator', () => {
       grandchildStub.withArgs(grandchildIn).onCall(0).returns(grandchildReturn);
       grandchildStub.returns(null);
 
-      const child = endpointGenerator.generate(childStub, { grandchild : grandchildStub });
-      const base = endpointGenerator.generate(baseStub, { child });
+      const child = chain(childStub, { grandchild : grandchildStub });
+      const base = chain(baseStub, { child });
 
       return Promise.try(base, [baseIn])
         .then((baseValue) => {
@@ -129,13 +129,13 @@ describe('endpointGenerator', () => {
         stubs.push(stub);
       }
 
-      let callPromise = endpointGenerator.generate(
+      let callPromise = chain(
         stubs[numberOfChildren - 2],
         { [numberOfChildren - 1] : stubs[numberOfChildren - 1] }
       );
 
       for (let i = stubs.length - 2; i > 0; i--) {
-        callPromise = endpointGenerator.generate(stubs[i - 1], { [i] : callPromise });
+        callPromise = chain(stubs[i - 1], { [i] : callPromise });
       }
 
       let currentResult = callPromise(inputs[0]);
