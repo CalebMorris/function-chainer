@@ -1,12 +1,9 @@
-# Wrapper Generator
+# Function Chainer
 
-API Wrapper Generator and Function Chaining Generator
+Function chainer to simplify response function calls
 
-# NOTE
 
-Currently only a function chainer and doesn't wrap a full API yet
-
-# Example - Function Chaining
+# Example
 
 ```javascript
 
