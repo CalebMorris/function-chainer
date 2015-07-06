@@ -7,7 +7,7 @@ Function chainer to simplify response function calls
 
 ```javascript
 
-var chain = require('wrapper-generator').chain;
+var chain = require('function-chainer').chain;
 
 function base() {
   console.log('BASE');
