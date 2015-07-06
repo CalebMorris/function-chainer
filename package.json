@@ -1,6 +1,6 @@
 {
   "name": "function-chainer",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Module to simplify handling child response functions",
   "main": "dist/index.js",
   "repository": {
