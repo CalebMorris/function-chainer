@@ -58,9 +58,9 @@ function chain(base, children) {
         );
       }
 
-      executionPromise[name] = (...args) => {
+      executionPromise[name] = (...childArgs) => {
         shouldContinue = false;
-        result = child(...args);
+        result = child(...childArgs);
         return Promise.resolve(result);
       };
 
