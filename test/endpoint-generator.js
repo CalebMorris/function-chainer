@@ -134,9 +134,9 @@ describe('endpointGenerator', () => {
 
     it('should allow unknown number of descendants', (done) => {
       const numberOfChildren = randInt(3, 100);
-      let stubs = [];
-      let inputs = [];
-      let outputExpected = [];
+      const stubs = [];
+      const inputs = [];
+      const outputExpected = [];
 
       for (let i = 0; i < numberOfChildren; i++) {
         const input = rand();
