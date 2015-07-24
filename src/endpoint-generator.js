@@ -21,9 +21,7 @@ InvalidChildNameError.prototype = Error.prototype;
  * @throws InvalidChildNameError
  * @returns {Func} - Chained function
  */
-function chain(base, children) {
-
-  children = children || [];
+function chain(base, children = []) {
 
   function wrappedFunc(...args) {
     const baseArguments = args;
