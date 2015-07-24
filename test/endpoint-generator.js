@@ -3,7 +3,7 @@ import Promise from 'bluebird';
 import sinon from 'sinon';
 import { expect } from 'chai';
 
-import { chain } from '../src/endpoint-generator';
+import { chain, InvalidChildNameError } from '../src/endpoint-generator';
 
 function rand() {
   return Math.random().toString(36).substring(7);
@@ -185,6 +185,40 @@ describe('endpointGenerator', () => {
       })
       .then(done)
       .catch(done);
+    });
+
+  });
+
+  describe('Errors', () => {
+
+    it('should allow chaining single child', (done) => {
+      const reservedPromiseWord = 'then';
+      const baseIn = rand();
+      const baseReturn = rand();
+
+      const baseStub = sinon.stub();
+      baseStub.withArgs(baseIn).onCall(0).returns(baseReturn);
+      baseStub.returns(null);
+
+      const base = chain(baseStub, { [reservedPromiseWord] : () => {} });
+
+      return Promise
+        .try(base, [baseIn])
+        .then((baseValue) => {
+          expect(baseValue).to.equal(baseReturn);
+
+          const baseOut = base(baseIn);
+          expect(baseOut).to.be.an('object');
+          expect(baseOut.child).to.be.undefined;
+
+          done('Should have throw an error');
+        })
+        .catch((err) => {
+          expect(err).to.be.an.instanceOf(InvalidChildNameError);
+          done();
+        })
+        .catch(done);
+
     });
 
   });
