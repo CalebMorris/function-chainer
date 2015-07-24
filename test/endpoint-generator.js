@@ -9,10 +9,7 @@ function rand() {
   return Math.random().toString(36).substring(7);
 }
 
-function randInt(lower, higher) {
-  lower = lower || 1;
-  higher = higher || 10;
-
+function randInt(lower = 1, higher = 10) {
   return Math.floor((Math.random() * higher) + lower);
 }
 
