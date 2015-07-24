@@ -8,7 +8,7 @@ function child() {
   console.log('CHILD');
 }
 
-var base = chain(base, { child : child } );
+var baseWrapped = chain(base, { child : child });
 
-base(); // Prints BASE
-base().child(); // Prints CHILD
+baseWrapped(); // Prints BASE
+baseWrapped().child(); // Prints CHILD
