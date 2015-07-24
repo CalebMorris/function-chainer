@@ -1,5 +1,8 @@
 # Function Chainer
 
+[![Build
+Status](https://api.shippable.com/projects/55b07d2aedd7f2c05280226a/badge?branchName=master)](https://app.shippable.com/projects/55b07d2aedd7f2c05280226a/builds/latest)
+
 Function chainer to simplify response function calls
 
 
