@@ -25,7 +25,7 @@ function chain(base, children) {
 
   children = children || [];
 
-  const wrappedFunc = (...args) => {
+  function wrappedFunc(...args) {
     const baseArguments = args;
 
     let isLoaded = false;
@@ -66,11 +66,10 @@ function chain(base, children) {
 
     });
 
-
     isLoaded = true;
 
     return executionPromise;
-  };
+  }
 
   return wrappedFunc;
 
