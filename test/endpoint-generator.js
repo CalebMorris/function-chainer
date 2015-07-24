@@ -22,6 +22,31 @@ describe('endpointGenerator', () => {
 
     it('should allow chaining single child', (done) => {
       const baseIn = rand();
+      const baseReturn = rand();
+
+      const baseStub = sinon.stub();
+      baseStub.withArgs(baseIn).onCall(0).returns(baseReturn);
+      baseStub.returns(null);
+
+      const base = chain(baseStub);
+
+      return Promise
+        .try(base, [baseIn])
+        .then((baseValue) => {
+          expect(baseValue).to.equal(baseReturn);
+
+          const baseOut = base(baseIn);
+          expect(baseOut).to.be.an('object');
+          expect(baseOut.child).to.be.undefined;
+
+          done();
+        })
+        .catch(done);
+
+    });
+
+    it('should allow chaining single child', (done) => {
+      const baseIn = rand();
       const childIn = rand();
       const baseReturn = rand();
       const childReturn = rand();
