@@ -52,7 +52,7 @@ function chain(base, children) {
 
     _.each(children, (child, name) => {
 
-      if (executionPromise.hasOwnProperty(name)) {
+      if (executionPromise.hasOwnProperty(name) || !! executionPromise[name]) {
         throw new InvalidChildNameError(
           `Property already attached to execution '${name}'`
         );
