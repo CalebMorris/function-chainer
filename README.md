@@ -22,5 +22,4 @@ var base = chain(base, { child : child });
 base(); // Prints BASE
 base().child(); // Prints CHILD
 
-
 ```
