@@ -39,7 +39,7 @@ function chain(base, children) {
       return result;
     }
 
-    let executionPromise = new Promise((resolve) => {
+    const executionPromise = new Promise((resolve) => {
       function checkLoaded() {
         if (isLoaded) {
           return resolve(baseResult(...baseArguments));
