@@ -204,15 +204,20 @@ describe('endpointGenerator', () => {
 
       return Promise
         .try(base, [baseIn])
-        .then((baseValue) => {
-          expect(baseValue).to.equal(baseReturn);
-
-          const baseOut = base(baseIn);
-          expect(baseOut).to.be.an('object');
-          expect(baseOut.child).to.be.undefined;
-
-          done('Should have throw an error');
+        .then(() => done('Should have throw an error'))
+        .catch((err) => {
+          expect(err).to.be.an.instanceOf(InvalidChildNameError);
+          done();
         })
+        .catch(done);
+
+    });
+
+    it('Empty Invalid Child Name Error', (done) => {
+      return new Promise((resolve, reject) => {
+        return reject(new InvalidChildNameError());
+      })
+        .then(() => done('Should have throw an error'))
         .catch((err) => {
           expect(err).to.be.an.instanceOf(InvalidChildNameError);
           done();
