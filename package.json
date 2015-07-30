@@ -8,13 +8,14 @@
     "url": "https://github.com/calebmorris/function-chainer"
   },
   "scripts": {
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
     "clean": "rm -Rf ./dist ./coverage",
     "build": "npm run clean && npm run test && npm run lint && npm run dist",
     "dist": "./node_modules/.bin/babel src/ --modules common --out-dir dist",
     "test": "./node_modules/.bin/mocha --recursive --compilers js:babel/register",
     "lint": "./node_modules/.bin/eslint --ext .js .",
     "lint-quiet": "./node_modules/.bin/eslint --ext .js --quiet .",
-    "coverage": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --recursive --compilers js:babel/register"
+    "coverage": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --reporter dot --recursive --compilers js:babel/register"
   },
   "author": {
     "name": "Caleb Morris",
@@ -29,6 +30,7 @@
     "babel": "^4.7.16",
     "babel-eslint": "^3.1.26",
     "chai": "^2.3.0",
+    "coveralls": "^2.11.3",
     "eslint": "^0.24.1",
     "istanbul": "^0.3.13",
     "mocha": "^2.2.1",
